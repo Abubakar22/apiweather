@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apiweather-deployment
+  labels:
+    app: apiweather
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: apiweather
+  template:
+    metadata:
+      labels:
+        app: apiweather
+    spec:
+      containers:
+      - name: apiweather
+        image: us.gcr.io/api/apiweather:0.1
+        ports:
+        - containerPort: 80
